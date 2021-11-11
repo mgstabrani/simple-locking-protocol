@@ -14,7 +14,7 @@ class transactionTabel:
             operation = self.content[i].replace('    ', '')
             self.operationOrder.append(operation[0] + str(nthTransaction) + operation[1:])
 
-    def getTransaction(self):
+    def getAllTransactions(self):
         return self.transactions
 
     def getOperationOrder(self):
@@ -22,3 +22,15 @@ class transactionTabel:
 
     def getnthTransaction(self, numberOfElmt):
         return (numberOfElmt-1)/2 + 1
+
+    def getDataItemFromOperation(self, operation):
+        return operation[-2]
+    
+    def getTransactionFromOperation(self, operation):
+        transaction = 'T' + operation[1:2]
+        for i in range(2,len(operation)):
+            if(operation[i] != '('):
+                transaction += operation[i]
+            else:
+                break
+        return transaction
