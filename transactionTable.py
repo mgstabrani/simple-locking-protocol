@@ -7,6 +7,8 @@ class transactionTabel:
             self.content.append(line.replace('\n', ''))
         
         self.transactions = self.content[0].split('     ')
+        for i in range (len(self.transactions)):
+            self.transactions[i] = self.transactions[i].replace(' ', '')
 
         self.operationOrder = []
         for i in range(1,len(self.content)):
