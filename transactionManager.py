@@ -56,6 +56,9 @@ class transactionManager:
         return self.grantOrder
 
     def displayOperationSchedule(self):
+        print('='*30)
+        print("Operation Order")
+        print('='*30)
         schedule = self.getOperationSchedule()
         i = 0
         for operation in schedule:
@@ -77,6 +80,5 @@ class transactionManager:
                 print(operation, ': Transaksi', transaction, 'melakukan commit')
             elif(operation[0] == 'A'):
                 print(operation, ': Transaksi', transaction, 'melakukan abort terhadap operasi')
-
 
             i += 1
