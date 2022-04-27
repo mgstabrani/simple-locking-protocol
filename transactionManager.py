@@ -41,10 +41,7 @@ class transactionManager:
 
     def isDataItemGranted(self, dataItem, transaction):
         for grant in self.lockGrant:
-            if(dataItem in self.lockGrant[grant] and grant != transaction):
-                return True
-            else:
-                return False
+            return bool((dataItem in self.lockGrant[grant] and grant != transaction))
 
     def getWaitOperations(self):
         return self.waitOperations
