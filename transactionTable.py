@@ -5,7 +5,7 @@ class transactionTabel:
         self.content = []
         for line in file.readlines():
             self.content.append(line.replace('\n', ''))
-        
+
         self.transactions = self.content[0].split('     ')
         for i in range (len(self.transactions)):
             self.transactions[i] = self.transactions[i].replace(' ', '')
@@ -27,7 +27,7 @@ class transactionTabel:
 
     def getDataItemFromOperation(self, operation):
         return operation[-2]
-    
+
     def getTransactionFromOperation(self, operation):
         transaction = 'T' + operation[1:2]
         for i in range(2,len(operation)):
