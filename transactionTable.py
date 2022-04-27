@@ -22,13 +22,16 @@ class transactionTabel:
     def getOperationOrder(self):
         return self.operationOrder
 
-    def getnthTransaction(self, numberOfElmt):
+    @staticmethod
+    def getnthTransaction(numberOfElmt):
         return (numberOfElmt-1)/2 + 1
 
-    def getDataItemFromOperation(self, operation):
+    @staticmethod
+    def getDataItemFromOperation(operation):
         return operation[-2]
 
-    def getTransactionFromOperation(self, operation):
+    @staticmethod
+    def getTransactionFromOperation(operation):
         transaction = 'T' + operation[1:2]
         for i in range(2,len(operation)):
             if operation[i] != '(':
