@@ -16,15 +16,15 @@ class transactionManager:
         for operation in operationOrder:
             transaction = transactionTable.getTransactionFromOperation(operation)
             dataItem = transactionTable.getDataItemFromOperation(operation)
-            if(operation[0] == 'U'):
+            if operation[0] == 'U':
                 self.lockGrant[transaction].remove(dataItem)
-            elif(operation[0] == 'C'):
+            elif operation[0] == 'C':
                 self.lockGrant[transaction] = []
                 self.operationSchedule.append(operation)
                 self.grantOrder.append(['-1','-1'])
             else:
-                if(not self.isDataItemGranted(dataItem, transaction)):
-                    if(dataItem not in self.lockGrant[transaction]):
+                if not self.isDataItemGranted(dataItem, transaction):
+                    if dataItem not in self.lockGrant[transaction]:
                         self.grantOrder.append([transaction, dataItem])
                         self.lockGrant[transaction].append(dataItem)
                     else:
@@ -61,21 +61,21 @@ class transactionManager:
         for operation in schedule:
             transaction = self.transactionTable.getTransactionFromOperation(operation)
             dataItem = self.transactionTable.getDataItemFromOperation(operation)
-            if(operation[0] == 'R'):
+            if operation[0] == 'R':
                 print(operation, ': Transaksi', transaction, 'melakukan read data', dataItem, end=' ')
-                if(self.grantOrder[i][0] != '-1'):
+                if self.grantOrder[i][0] != '-1':
                     print('(', self.grantOrder[i][0], 'granted on', self.grantOrder[i][1], ')')
                 else:
                     print()
-            elif(operation[0] == 'W'):
+            elif operation[0] == 'W':
                 print(operation, ': Transaksi', transaction, 'melakukan write data', dataItem, end=' ')
-                if(self.grantOrder[i][0] != '-1'):
+                if self.grantOrder[i][0] != '-1':
                     print('(', self.grantOrder[i][0], 'granted on', self.grantOrder[i][1], ')')
                 else:
                     print()
-            elif(operation[0] == 'C'):
+            elif operation[0] == 'C':
                 print(operation, ': Transaksi', transaction, 'melakukan commit')
-            elif(operation[0] == 'A'):
+            elif operation[0] == 'A':
                 print(operation, ': Transaksi', transaction, 'melakukan abort terhadap operasi')
 
             i += 1

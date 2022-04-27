@@ -31,7 +31,7 @@ class transactionTabel:
     def getTransactionFromOperation(self, operation):
         transaction = 'T' + operation[1:2]
         for i in range(2,len(operation)):
-            if(operation[i] != '('):
+            if operation[i] != '(':
                 transaction += operation[i]
             else:
                 break
