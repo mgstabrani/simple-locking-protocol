@@ -30,7 +30,7 @@ class transactionManager:
                     else:
                         self.grantOrder.append(['-1','-1'])
                     self.operationSchedule.append(operation)
-                
+
                 else:
                     self.operationSchedule.append('A' + transaction[1])
                     self.grantOrder.append(['-1','-1'])
